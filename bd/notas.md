@@ -1,8 +1,7 @@
 # Banco de Dados
 ## Ambiente
 - Python, sqlite3 e DBeaver Community
-- criar conexão
-- criar um cursor
+- O que é um cursor?
   - cursor é uma área de memória reservada para o armazenamento dos registros manipulados por comandos DML.
   - Exemplo: SELECT -> linhas retornadas vão para memória e podem ser acessadas pela aplicação
   - sempre que o comando DML manipular mais de uma linha de informação, dados irão para um cursor
@@ -16,6 +15,38 @@
 
 > LEMBRETE: Fechar as conexões e cursores ao sair da aplicação
 
+
+## Primeiros Passos
+
+### Sequência de Trabalho
+
+- criar banco de dados
+- criar e abrir conexão
+- criar cursor
+- executar operações com o cursor
+- fazer commit na conexão
+- fechar cursor e conexão
+
+Exemplo:
+
+```python 
+import sqlite3
+conn = sqlite3.connect(DB_FILE)
+cursor = conn.cursor()
+cursor.execute(sql)
+conn.commit()
+
+cursor.close()
+conn.close()
+```
+
+### Lembretes
+
+- DELETE sem WHERE apaga todos registros
+- Se mencionar ID em VALUES, atribuir valor NULL
+- Reiniciar numeração dos ID
+  
+  ` DELETE FROM sqlite_sequence WHERE name=”TABLE_NAME” `
 
 ## Referências
 - [O que é cursor](https://www.youtube.com/watch?v=0ALGFmASo6I)
