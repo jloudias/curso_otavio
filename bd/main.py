@@ -17,6 +17,30 @@ sql += "name TEXT, weight REAL)"
 
 cursor.execute(sql)
 conn.commit()  # comita o bd
+#
+# CUIDADO: fazendo delete sem where
+cursor.execute(f"DELETE FROM {TABLE_NAME}")
+#
+# zerar sequencia de ID
+cursor.execute(f"DELETE FROM sqlite_sequence WHERE name='{TABLE_NAME}'")
+#
+# CUIDADO: sql injection
+# inserindo dados
+sql2 = """
+    INSERT INTO customers(id, name, weight)
+    VALUES
+    (NULL, 'Jorge Dias', 79.9), 
+    (NULL, 'Jussara Belem', 70.2),
+    (NULL, 'Sátia Dias', 55.5),
+    (NULL, 'Laura Tamayo', 15.5)
+"""
+cursor.execute(sql2)
+#
+# usando placeholders
+sql3 = f"INSERT INTO {TABLE_NAME}(name, weight) VALUES (?,?)"
+cursor.execute(sql3, ["Sinthia Chata", "33.4"])
+
+conn.commit()
 
 
 cursor.close()
