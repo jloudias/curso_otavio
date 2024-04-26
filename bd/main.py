@@ -39,7 +39,11 @@ cursor.execute(sql2)
 # usando placeholders
 sql3 = f"INSERT INTO {TABLE_NAME}(name, weight) VALUES (?,?)"
 cursor.execute(sql3, ["Sinthia Chata", "33.4"])
-
+#
+# executemany
+cursor.executemany(
+    sql3, [("Pedro", 22.2), ("Maria das Graças", 33.4), ("Pedro Calmon", 33.5)]
+)
 conn.commit()
 
 
