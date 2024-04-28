@@ -48,8 +48,15 @@ conn.close()
   
   ` DELETE FROM sqlite_sequence WHERE name=”TABLE_NAME” `
 
-- métodos de cursor: execute() e executemany()
+- usar placeholders para evitar ssql injection
+  
+  `INSERT INTO table(campo1, campo2) VALUES(?,?)`
 
+- métodos de cursor: execute() e executemany()
+- executemany pode conter listas, tuplas ou dicionários
+  - dicionários -> nome da chave não precisa ser o nome do campo
+  - use nomes das keys dos dicionários como placeholders
+  
 ## Referências
 - [O que é cursor](https://www.youtube.com/watch?v=0ALGFmASo6I)
 - [SQLite documentation](https://www.sqlite.org/doclist.html)

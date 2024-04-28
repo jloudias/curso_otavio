@@ -36,7 +36,7 @@ sql2 = """
 """
 cursor.execute(sql2)
 #
-# usando placeholders
+# usando placeholders e listas de tuplas
 sql3 = f"INSERT INTO {TABLE_NAME}(name, weight) VALUES (?,?)"
 cursor.execute(sql3, ["Sinthia Chata", "33.4"])
 #
@@ -44,8 +44,14 @@ cursor.execute(sql3, ["Sinthia Chata", "33.4"])
 cursor.executemany(
     sql3, [("Pedro", 22.2), ("Maria das Graças", 33.4), ("Pedro Calmon", 33.5)]
 )
-conn.commit()
+#
+# usando placeholders e dicionários
+sql4 = f"INSERT INTO {TABLE_NAME}(name, weight) VALUES(:dn, :dw)"
+cursor.executemany(
+    sql4, [{"dn": "Marcos Cintra", "dw": 22.2}, {"dn": "Pedro da Zefa", "dw": 11.1}]
+)
 
+conn.commit()
 
 cursor.close()
 conn.close()
