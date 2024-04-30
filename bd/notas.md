@@ -42,13 +42,15 @@ conn.close()
 
 ### Lembretes
 
+> **IMPORTANTE:** Sempre que der, filtre e gerencie com SQL. 
+
 - DELETE sem WHERE apaga todos registros
 - Se mencionar ID em VALUES, atribuir valor NULL
 - Reiniciar numeração dos ID
   
-  ` DELETE FROM sqlite_sequence WHERE name=”TABLE_NAME” `
+  `DELETE FROM sqlite_sequence WHERE name=”TABLE_NAME” `
 
-- usar placeholders para evitar ssql injection
+- usar placeholders para evitar sql injection
   
   `INSERT INTO table(campo1, campo2) VALUES(?,?)`
 
@@ -56,8 +58,18 @@ conn.close()
 - executemany pode conter listas, tuplas ou dicionários
   - dicionários -> nome da chave não precisa ser o nome do campo
   - use nomes das keys dos dicionários como placeholders
+- métodos do cursor para SELECT
+  - fetchall()
+  - fetchmany()
+  - 
+- módulos para formatar saída de dados como tabela no terminal:
+  - tabulate
+  - PrettyTable
+  - textable
+  - termtables
   
 ## Referências
 - [O que é cursor](https://www.youtube.com/watch?v=0ALGFmASo6I)
 - [SQLite documentation](https://www.sqlite.org/doclist.html)
 - [SQLite Tutorial](https://www.techonthenet.com/sqlite/index.php)
+- [Printing lists as tabular data](https://stackoverflow.com/questions/9535954/printing-lists-as-tabular-data)
