@@ -7,26 +7,29 @@ from tabulate import tabulate
 conn = sqlite3.connect(DB_FILE)  # conecta ao arquivo. Se não existir
 cursor = conn.cursor()
 #
-# tabela
+# consulta a tabela
 cursor.execute(f"SELECT * FROM {TABLE_NAME}")
-# print("ID NAME        WEIGHT")
-# print("=====================")
-# for row in cursor.fetchall():
-# fetchall() retorna uma tupla
+#
+# imprime os dados do cursor.
+# OBS: o método fetchall() retorna uma tupla com os campos da linha
+#
 # Método 1 - Longo
-# _id = row[0]
-# name = row[1]
-# weight = row[2]
+# for row in cursor.fetchall():
+#     _id = row[0]
+#     name = row[1]
+#     weight = row[2]
+#     print(_id, name, weight)
 #
 # Método 2 - Desempacotamento
-# _id, name, weight = row
-
-# print(_id, name, weight)
+# for row in cursor.fetchall():
+#     _id, name, weight = row
+#     print(_id, name, weight)
 #
 # Método 3 - List comprehension e tabulate
 my_data = [(row[0], row[1], row[2]) for row in cursor.fetchall()]
+print(f"\nTabela {TABLE_NAME}\n")
 print(tabulate(my_data, headers=["ID", "Name", "Weight"], tablefmt="orgtbl"))
 
-
+# limpa os dados
 cursor.close()
 conn.close()
