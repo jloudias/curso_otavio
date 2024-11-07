@@ -67,7 +67,10 @@ conn.close()
   - PrettyTable
   - textable
   - termtables
-  
+
+## MySQL
+
+
 ## Referências
 - [O que é cursor](https://www.youtube.com/watch?v=0ALGFmASo6I)
 - [SQLite documentation](https://www.sqlite.org/doclist.html)
